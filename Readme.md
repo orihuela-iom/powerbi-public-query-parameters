@@ -15,8 +15,7 @@ Dado un informe público con la siguiente URL:
 https://app.powerbi.com/view?r=XXXX&columna1 Is 5&columna2 In ('A', 'B')
 ```
 Este **Custom Visual** aplicará los siguientes filtros:
-- `columna1 = 5`
-- `columna2 IN ('A', 'B')`
+- `columna1 = 5 AND columna2 IN ('A', 'B')`
 
 
 ## 📥 Instalación
@@ -39,8 +38,3 @@ Este **Custom Visual** aplicará los siguientes filtros:
 - La URL debe ser de un informe publico.
 - Los nombres de las columnas en la URL deben coincidir con los del modelo de datos.
 - La sintaxis de los filtros en la URL debe seguir la estructura soportada (`Is`, `In`, etc.).
-
-
-## Contacto
-[act.orihuela@gmail.com](mailto:act.orihuela@gmail.com).
-
