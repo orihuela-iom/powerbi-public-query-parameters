@@ -8,6 +8,7 @@ in|is|notin|lessthan|lessthanorEqual|greaterthan|greaterthanorequal|contains|doe
 
 "use strict";
 import powerbi from "powerbi-visuals-api";
+
 import DataView = powerbi.DataView;
 import VisualConstructorOptions = powerbi.extensibility.visual.VisualConstructorOptions;
 import IVisual = powerbi.extensibility.visual.IVisual;
@@ -17,31 +18,20 @@ import * as models from 'powerbi-models';
 import {urlParser, FilterResult} from './parser';
 
 
-
 export class Visual implements IVisual {
     private host: IVisualHost;
     private filterApplied: boolean = false;
     private queryParamName;
-
+    private target: HTMLElement;
+   
 
     constructor(options: VisualConstructorOptions) {
         this.host = options.host;
-        //this.testFilter();
+        this.target = options.element;
+    
+        const backgroundColor = "transparent";
+        this.target.style.backgroundColor = backgroundColor;
     }
-
-    public testFilter(){
-        const basicFilter = {
-            $schema: "http://powerbi.com/product/schema#basic",
-            target: {table: "Hoja2", 
-                     column: "Municipio"},
-            operator: "In",
-            values: ["TOLUCA"],
-            filterType:models.FilterType.Basic
-        };
-        this.host.applyJsonFilter(basicFilter, "general", "filter", powerbi.FilterAction.merge);
-        console.log("algo aqui")
-    }
-
 
     public constructAdvancedFilter (parsedFilter: FilterResult, tableName: string){
 
@@ -92,38 +82,6 @@ export class Visual implements IVisual {
 
     }
 
-    public applyFiltersFromUrl(options: VisualUpdateOptions) {
-
-        // parametros url
-        const urlParams = new URLSearchParams(document.referrer);
-        const filterValue = urlParams.get(options.dataViews[0].categorical.categories[0].source.displayName);
-        if (!filterValue) {return;}
-
-
-        const dataView: DataView = options.dataViews[0];
-        const categories: powerbi.DataViewCategoricalColumn = dataView.categorical.categories[0];
-        const columnName = categories.source.displayName;
-
-        const filterValues = filterValue.split(",").map(decodeURIComponent);
-
-        const basicFilter = {
-                $schema: "http://powerbi.com/product/schema#basic",
-                target: {table: categories.source.queryName.split('.')[0], 
-                         column: columnName},
-                operator: "In",
-                values: filterValues,
-                filterType:models.FilterType.Basic
-        };
-    
-        this.host.applyJsonFilter(
-                basicFilter, 
-                "general", 
-                "filter", 
-                powerbi.FilterAction.merge
-        );
-
-
-    }
 
     public update(options: VisualUpdateOptions) {
 
@@ -133,4 +91,5 @@ export class Visual implements IVisual {
             this.filterApplied = true;
         }
     }
+
 }

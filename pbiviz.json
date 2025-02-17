@@ -1,11 +1,11 @@
 {
     "visual": {
-        "name": "filtro",
-        "displayName": "filtro",
+        "name": "PublicQueryStringUrl",
+        "displayName": "PublicQueryStringUrl",
         "guid": "filtro954EB7B3E0D1431E9582F6E9CDB01E70",
         "visualClassName": "Visual",
         "version": "1.0.0.0",
-        "description": "filtro algos",
+        "description": "Query string parameters in public informs url",
         "supportUrl": "https://github.com/",
         "gitHubUrl": ""
     },
