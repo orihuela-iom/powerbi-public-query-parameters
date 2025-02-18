@@ -1,4 +1,4 @@
-# Custom Visual - Query String Parameter for Power BI Public URL
+# Custom Visual - Query string parameters in publish to web power bi report URL 
 
 Allows applying filters from the URL of a public report. This makes it easier to share pre-filtered reports.
 
