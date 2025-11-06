@@ -2,12 +2,12 @@
 
 Allows applying filters from the URL of a public report. This makes it easier to share pre-filtered reports.
 
-## 🚀 Features
+## Features
 - Extracts filters from the URL of a Power BI public report.
 - Supports filters with the following operators: `In`, `NotIn`, `Is`, `LessThan`, `LessThanOrEqual`, `GreaterThan`, `GreaterThanOrEqual`, `Contains`, `DoesNotContain`, `StartsWith`, `DoesNotStartWith`.
 - Supports filters on multiple columns, separated by `&`.
 
-## 📌 Usage Example
+## Usage Example
 Given a public report with the following URL:
 ```plaintext
 https://app.powerbi.com/view?r=XXXX&column1 Is 5&column2 In ('A', 'B')
@@ -15,19 +15,26 @@ https://app.powerbi.com/view?r=XXXX&column1 Is 5&column2 In ('A', 'B')
 This **Custom Visual** will apply the following filters:
 - `column1 = 5 AND column2 IN ('A', 'B')`
 
+Second example
+```plaintext
+https://app.powerbi.com/view?r=XXXX&column1 Is myvalue
+```
+
+
 ## 📥 Installation
 1. Download the `.pbiviz` file.
 2. Open Power BI Desktop.
 3. Import Custom visual.
 
-## 🛠️ Configuration
+## Configuration
 1. Add the **Custom Visual** to the Power BI canvas.
 2. Add the visual to the report and assign the column to filter by.
 3. If you want to add an extra filter for another column, repeat steps 1 and 2.
 4. Ensure that the columns mentioned in the URL exist in the data model.
 5. Verify that the values are compatible with the data types in Power BI.
 
-## 🎯 Considerations
+## Considerations
+- Doesn´t work on webkit based browser
 - Supports one filter per column.
 - All report elements must be loaded before the filters are applied.
 - The URL must be from a public report.
