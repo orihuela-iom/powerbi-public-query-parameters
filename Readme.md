@@ -34,7 +34,7 @@ https://app.powerbi.com/view?r=XXXX&column1 Is myvalue
 5. Verify that the values are compatible with the data types in Power BI.
 
 ## Considerations
-- Doesn´t work on webkit based browser
+- Doesn´t work on webkit based browser (Safari: IOS-MACOS)
 - Supports one filter per column.
 - All report elements must be loaded before the filters are applied.
 - The URL must be from a public report.
